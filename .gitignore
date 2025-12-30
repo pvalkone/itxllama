@@ -4,4 +4,5 @@
 
 kicad/*-backups
 kicad/*-cache
-/rp2040/build
+/rp2040/build/*
+!/rp2040/build/itxllama-rp2040.uf2
