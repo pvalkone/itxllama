@@ -42,11 +42,26 @@ int main() {
 
   tuh_hid_set_default_protocol(HID_PROTOCOL_REPORT);
   tuh_init(0);
+  
+  // Poll tuh_task() to allow port 0 enumeration to complete before
+  // initialising port 1. This prevents enumeration race conditions.
+  // 1500ms should be sufficient for most USB devices to enumerate.
+  for(int i = 0; i < 150; i++) {
+    tuh_task();
+    sleep_ms(10);
+  }
 
   pio_usb_configuration_t pio_cfg = PIO_USB_DEFAULT_CONFIG;
   pio_cfg.pin_dp = 24;
   tuh_configure(1, TUH_CFGID_RPI_PIO_USB_CONFIGURATION, &pio_cfg);
   tuh_init(1);
+  
+  // Poll tuh_task() to allow port 1 enumeration to complete.
+  // 1500ms should be sufficient for most USB devices to enumerate.
+  for(int i = 0; i < 150; i++) {
+    tuh_task();
+    sleep_ms(10);
+  }
 
   kb_init(2, 0);
   ms_init(4, 0);
