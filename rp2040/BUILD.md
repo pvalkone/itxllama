@@ -1,5 +1,7 @@
 # Build
 
+## Manual Build
+
 Get the Raspberry Pi Pico SDK version 2.1.1 and compiler:
 
 ```sh
@@ -24,3 +26,14 @@ cd build
 cmake ..
 make
 ```
+
+## Docker Build
+
+Another way to build the firmware is using Docker, which handles all dependencies automatically:
+
+```sh
+cd /path/to/itxllama/rp2040
+./docker-build.sh
+```
+
+The UF2 file will be generated at `build/itxllama-rp2040.uf2`.
