@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
 
 PICO_SDK_VERSION=${PICO_SDK_VERSION:-2.1.1}
