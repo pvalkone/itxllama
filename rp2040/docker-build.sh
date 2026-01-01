@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
 
 PICO_SDK_VERSION=${PICO_SDK_VERSION:-2.1.1}
 TINYUSB_VERSION=${TINYUSB_VERSION:-0.18.0}
